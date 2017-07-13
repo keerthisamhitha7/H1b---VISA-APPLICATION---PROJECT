@@ -1,0 +1,31 @@
+4.
+
+create table y21(ename string,year int,c_year int) row format delimited fields terminated by ',';
+
+create table y22(ename string,year int,c_year int) row format delimited fields terminated by ',';
+
+create table y23(ename string,year int,c_year int) row format delimited fields terminated by ',';
+
+create table y24(ename string,year int,c_year int) row format delimited fields terminated by ',';
+
+create table y25(ename string,year int,c_year int) row format delimited fields terminated by ',';
+
+create table y26(ename string,year int,c_year int) row format delimited fields terminated by ',';
+
+
+
+insert into table y21 select employer_name,year,count(year) as cyear from h1b_final where year= '2011' group by employer_name,year order by year desc limit 5;
+
+insert into table y22 select employer_name,year,count(year) as cyear from h1b_final where year= '2012' group by employer_name,year order by year desc limit 5;
+
+insert into table y23 select employer_name,year,count(year) as cyear from h1b_final where year= '2013' group by employer_name,year order by year desc limit 5;
+
+insert into table y24 select employer_name,year,count(year) as cyear from h1b_final where year= '2014' group by employer_name,year order by year desc limit 5;
+
+insert into table y25 select employer_name,year,count(year) as cyear from h1b_final where year= '2015' group by employer_name,year order by year desc limit 5;
+
+insert into table y26 select employer_name,year,count(year) as cyear from h1b_final where year= '2016' group by employer_name,year order by year desc limit 5;
+
+
+
+select * from y21 union all select * from y22 union all select * from y23 union all select * from y24 union all select * from y25 union all select * from y26 order by year;
