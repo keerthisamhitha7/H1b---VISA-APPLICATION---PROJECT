@@ -1,0 +1,33 @@
+5a.
+
+
+create table year21(jobs string,year int,c_year int) row format delimited fields terminated by ',';
+
+create table year22(jobs string,year int,c_year int) row format delimited fields terminated by ',';
+
+create table year23(jobs string,year int,c_year int) row format delimited fields terminated by ',';
+
+create table year24(jobs string,year int,c_year int) row format delimited fields terminated by ',';
+
+create table year25(jobs string,year int,c_year int) row format delimited fields terminated by ',';
+
+create table year26(jobs string,year int,c_year int) row format delimited fields terminated by ',';
+
+
+
+insert into table year21 select job_title,year,count(year) as cnt from h1b_final where year= '2011' group by job_title,year order by cnt desc limit 10;
+
+insert into table year22 select job_title,year,count(year) as cnt from h1b_final where year= '2012' group by job_title,year order by cnt desc limit 10;
+
+insert into table year23 select job_title,year,count(year) as cnt from h1b_final where year= '2013' group by job_title,year order by cnt desc limit 10;
+
+insert into table year24 select job_title,year,count(year) as cnt from h1b_final where year= '2014' group by job_title,year order by cnt desc limit 10;
+
+insert into table year25 select job_title,year,count(year) as cnt from h1b_final where year= '2015' group by job_title,year order by cnt desc limit 10;
+
+insert into table year26 select job_title,year,count(year) as cnt from h1b_final where year= '2016' group by job_title,year order by cnt desc limit 10;
+
+
+
+select * from year21 union all select * from year22 union all select * from year23 union all select * from year24 union all select * from year25 union all select * from year26 order by year;
+
