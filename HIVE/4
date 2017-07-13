@@ -1,0 +1,9 @@
+bag1 = load '/home/hduser/Bigdata Project/h1b.csv' using PigStorage(',') as (s_no:int,case_status:chararray,employer_name:chararray,soc_name:chararray,job_title:chararray,full_time_position:chararray,prevailing_wage:int,year:int,worksite:chararray,long:double,lati:double);
+bag2 = group bag1 by (employer_name,year);
+bag3 =  foreach bag2 generate group,COUNT(bag1);
+bag4 = foreach bag3 generate FLATTEN(group),$1;
+split bag4 into bag5 if year ==2011,bag6 if year ==2012,bag7 if year ==2013,bag8 if year ==2014,bag9 if year ==2015,bag10 if year ==2016;
+dump bag5;;
+bag9 = order bag5 by $2 desc;
+bag10 = limit bag9 5;
+dump bag10;
