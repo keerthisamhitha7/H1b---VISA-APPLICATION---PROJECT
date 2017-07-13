@@ -1,0 +1,4 @@
+8.
+select year,job_title,AVG(prevailing_wage) as average from h1b_final where full_time_position='Y' and prevailing_wage is not null group by job_title,year order by average desc;
+
+select year,job_title,AVG(prevailing_wage) as average from h1b_final where full_time_position='N' and prevailing_wage is not null group by job_title,year order by average desc;
