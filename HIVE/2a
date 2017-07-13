@@ -1,0 +1,4 @@
+2.a 
+
+select split(worksite,'[,]')[1] as state, job_title,count(split(worksite,'[,]')[1]) as job_cnt from 
+h1b_applications where job_title LIKE '%DATA ENGINEER%' group by job_title,split(worksite,'[,]')[1] order by job_cnt desc;
