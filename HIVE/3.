@@ -1,0 +1,3 @@
+3.
+
+select soc_name ,count(soc_name) as cnt from h1b_final where job_title like '%Data Scientists%' group by soc_name order by cnt desc;
