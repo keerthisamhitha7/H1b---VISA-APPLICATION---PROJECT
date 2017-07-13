@@ -1,0 +1,31 @@
+2b.
+
+create table y11(location string,year int,cyear int,case_status string) row format delimited fields terminated by ',';
+
+create table y12(location string,year int,cyear int,case_status string) row format delimited fields terminated by ',';
+
+create table y13(location string,year int,cyear int,case_status string) row format delimited fields terminated by ',';
+
+create table y14(location string,year int,cyear int,case_status string) row format delimited fields terminated by ',';
+
+create table y15(location string,year int,cyear int,case_status string) row format delimited fields terminated by ',';
+
+create table y16(location string,year int,cyear int,case_status string) row format delimited fields terminated by ',';
+
+
+
+insert into table y11 select worksite,year,count(year) as cyear,case_status from h1b_final where case_status ='CERTIFIED' and year= '2011' group by worksite,year,case_status order by year desc limit 5;
+
+insert into table y12 select worksite,year,count(year) as cyear,case_status from h1b_final where case_status ='CERTIFIED' and year= '2012' group by worksite,year,case_status order by year desc limit 5;
+
+insert into table y13 select worksite,year,count(year) as cyear,case_status from h1b_final where case_status ='CERTIFIED' and year= '2013' group by worksite,year,case_status order by year desc limit 5;
+
+insert into table y14 select worksite,year,count(year) as cyear,case_status from h1b_final where case_status ='CERTIFIED' and year= '2014' group by worksite,year,case_status order by year desc limit 5;
+
+insert into table y15 select worksite,year,count(year) as cyear,case_status from h1b_final where case_status ='CERTIFIED' and year= '2015' group by worksite,year,case_status order by year desc limit 5;
+
+insert into table y16 select worksite,year,count(year) as cyear,case_status from h1b_final where case_status ='CERTIFIED' and year= '2016' group by worksite,year,case_status order by year desc limit 5;
+
+
+
+select * from y11 union all select * from y12 union all select * from y13 union all select * from y14 union all select * from y15 union all select * from y16 order by year;
