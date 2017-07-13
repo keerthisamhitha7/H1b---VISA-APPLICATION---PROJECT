@@ -1,0 +1,32 @@
+5b.
+
+
+create table year11(jobs string,year int,c_yr int,case_status string) row format delimited fields terminated by ',';
+
+create table year12(jobs string,year int,c_yr int,case_status string) row format delimited fields terminated by ',';
+
+create table year13(jobs string,year int,c_yr int,case_status string) row format delimited fields terminated by ',';
+
+create table year14(jobs string,year int,c_yr int,case_status string) row format delimited fields terminated by ',';
+
+create table year15(jobs string,year int,c_yr int,case_status string) row format delimited fields terminated by ',';
+
+create table year16(jobs string,year int,c_yr int,case_status string) row format delimited fields terminated by ',';
+
+
+
+insert into table year11 select job_title ,year,count(year) as cnt ,case_status from h1b_final where case_status ='CERTIFIED' and year= '2011' group by job_title,year,case_status order by year desc limit 10;
+
+insert into table year12 select job_title,year,count(year) as cnt,case_status from h1b_final where case_status ='CERTIFIED' and year= '2012' group by job_title,year,case_status order by year desc limit 10;
+
+insert into table year13 select job_title,year,count(year) as cnt,case_status from h1b_final where case_status ='CERTIFIED' and year= '2013' group by job_title,year order by year desc limit 10;
+
+insert into table year14 select job_title,year,count(year) as cnt,case_status from h1b_final where case_status ='CERTIFIED' and year= '2014' group by job_title,year,case_status order by year desc limit 10;
+
+insert into table year15 select job_title,year,count(year) as cnt,case_status from h1b_final where case_status ='CERTIFIED' and year= '2015' group by job_title,year,case_status order by year desc limit 10;
+
+insert into table year16 select job_title,year,count(year) as cnt,case_status from h1b_final where case_status ='CERTIFIED' and year= '2016' group by job_title,year,case_status order by year desc limit 10;
+
+
+
+select * from year11 union all select * from year12 union all select * from year13 union all select * from year14 union all select * from year15 union all select * from year16 order by year;
